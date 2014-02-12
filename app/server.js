@@ -3,7 +3,8 @@
 var express = require('express'),
     http = require('http'),
     routes = require('./routes'),
-    config = require('./middleware/configuration');
+    config = require('./middleware/configuration'),
+    notFound = require('./middleware/notFound');
 
 var app = express();
 
@@ -19,6 +20,7 @@ app.set('port', port);
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(app.router);
+app.use(notFound.index);
 
 //ROUTES
 var path = "";
@@ -31,9 +33,9 @@ app.get(path + '/healthcheck', routes.healthcheck.index);
 var server = http.createServer(app);
 server.listen(app.get('port'), function(){
     if (config.get("iisnode")) {
-        console.log('Express server running on iisnode under: ' + path);
+        console.log('Express server running on iisnode under: ' + path + '   configured for environment:  ' + config.get('environment'));
     } else {
-        console.log('Express server listening on port ' + app.get('port'));
+        console.log('Express server listening on port ' + app.get('port') + '   configured for environment:  ' + config.get('environment'));
     }
 });
 

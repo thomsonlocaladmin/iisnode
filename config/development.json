@@ -4,6 +4,10 @@
     },
     "path": {
         "routes": ""
+    },
+    "logger" : {
+        "filename": "logs/development.log",
+        "level": "info"
     }
 
 }

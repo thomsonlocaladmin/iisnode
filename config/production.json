@@ -1,5 +1,9 @@
 {
     "path": {
         "routes": "/node/iisnode/api"
+    },
+    "logger" : {
+        "filename": "D:/logs/production.log",
+        "level": "warn"
     }
 }

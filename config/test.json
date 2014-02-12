@@ -4,5 +4,9 @@
     },
     "path": {
         "routes": ""
+    },
+    "logger" : {
+        "filename": "logs/coverage.log",
+        "level": "error"
     }
 }

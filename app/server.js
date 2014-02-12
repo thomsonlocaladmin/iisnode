@@ -4,7 +4,8 @@ var express = require('express'),
     http = require('http'),
     routes = require('./routes'),
     config = require('./middleware/configuration'),
-    notFound = require('./middleware/notFound');
+    notFound = require('./middleware/notFound'),
+    logger = require("./middleware/logger");
 
 var app = express();
 
@@ -30,9 +31,9 @@ app.get(path + '/healthcheck', routes.healthcheck.index);
 var server = http.createServer(app);
 server.listen(app.get('port'), function(){
     if (config.get("iisnode")) {
-        console.log('Express server running on iisnode under: ' + path + '   configured for environment:  ' + config.get('environment'));
+        logger.info('Express server running on iisnode under: ' + path + '   configured for environment:  ' + config.get('environment'));
     } else {
-        console.log('Express server listening on port ' + app.get('port') + '   configured for environment:  ' + config.get('environment'));
+        logger.info('Express server listening on port ' + app.get('port') + '   configured for environment:  ' + config.get('environment'));
     }
 });
 

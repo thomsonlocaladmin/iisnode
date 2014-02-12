@@ -2,7 +2,8 @@
 
 var express = require('express'),
     http = require('http'),
-    routes = require('./routes');
+    routes = require('./routes'),
+    config = require('./middleware/configuration');
 
 var app = express();
 var port = process.env.PORT;

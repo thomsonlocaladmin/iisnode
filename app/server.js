@@ -1,9 +1,7 @@
 "use strict";
 
 var express = require('express'),
-    http = require('http'),
-    routes = require('./routes');
-
+    http = require('http');
 
 var app = express();
 var port = process.env.PORT;
@@ -15,7 +13,9 @@ app.use(express.urlencoded());
 app.use(app.router);
 
 //ROUTES
-app.get('/healthcheck', routes.healthcheck.index);
+app.get('/healthcheck', function(req, res){
+    res.json(200, 'OK');
+});
 
 //START
 var server = http.createServer(app);

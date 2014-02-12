@@ -8,7 +8,9 @@ var express = require('express'),
 var app = express();
 
 var port = null;
-//if (config.get("iisnode")) {
+if (config.get("iisnode")) {
+    console.log("iisnode");
+}
     port = process.env.PORT;
 //    console.log("running on iisnode");
 //} else {

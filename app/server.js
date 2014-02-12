@@ -10,10 +10,8 @@ var app = express();
 var port = null;
 if (config.get("iisnode")) {
     port = process.env.PORT;
-    console.log("running on iisnode");
 } else {
     port = config.get('express:port');
-    console.log("running without iisnode");
 }
 
 //MIDDLEWARE
@@ -32,7 +30,11 @@ app.get(path + '/healthcheck', routes.healthcheck.index);
 //START
 var server = http.createServer(app);
 server.listen(app.get('port'), function(){
-    console.log('Express server listening on port ' + app.get('port'));
+    if (config.get("iisnode")) {
+        console.log('Express server running on iisnode under: ' + path);
+    } else {
+        console.log('Express server listening on port ' + app.get('port'));
+    }
 });
 
 module.exports = app;

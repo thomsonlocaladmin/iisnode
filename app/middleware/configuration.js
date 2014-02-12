@@ -14,9 +14,7 @@ function Config(){
 }
 
 Config.prototype.get = function(key) {
-    console.log("here");
     if (key === "iisnode") {
-        console.log("here2");
         return isIISNodeEnvironment();
     }
     return nconf.get(key);
@@ -25,9 +23,7 @@ Config.prototype.get = function(key) {
 function isIISNodeEnvironment() {
     var environment = nconf.get('NODE:ENV') || 'development';
     environment = environment.toLowerCase();
-    console.log(environment);
     if (environment === "staging" || environment === "production") {
-        console.log("here3");
         return true;
     }
     return false;

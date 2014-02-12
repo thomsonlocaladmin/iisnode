@@ -23,10 +23,7 @@ app.use(app.router);
 app.use(notFound.index);
 
 //ROUTES
-var path = "";
-if (config.get("iisnode")) {
-    path = '/node/iisnode/api';
-}
+var path = config.get("path:routes");
 app.get(path + '/healthcheck', routes.healthcheck.index);
 
 //START

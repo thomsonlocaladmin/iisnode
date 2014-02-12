@@ -13,7 +13,7 @@ app.use(express.urlencoded());
 app.use(app.router);
 
 //ROUTES
-app.get('/healthcheck', function(req, res){
+app.get('/node/iisnode/api/healthcheck', function(req, res){
     res.json(200, 'OK');
 });
 

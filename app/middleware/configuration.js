@@ -5,6 +5,7 @@ var nconf = require('nconf');
 function Config(){
     nconf.argv().env('_');
     var environment = nconf.get('NODE:ENV') || 'development';
+    environment = environment.toLowerCase();
     var path = "";
     if (isIISNodeEnvironment()) {
         path = 'D:/';
@@ -23,6 +24,7 @@ Config.prototype.get = function(key) {
 
 function isIISNodeEnvironment() {
     var environment = nconf.get('NODE:ENV') || 'development';
+    environment = environment.toLowerCase();
     console.log(environment);
     if (environment === "staging" || environment === "production") {
         console.log("here3");

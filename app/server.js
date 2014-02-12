@@ -9,14 +9,12 @@ var app = express();
 
 var port = null;
 if (config.get("iisnode")) {
-    console.log("iisnode");
-}
     port = process.env.PORT;
-//    console.log("running on iisnode");
-//} else {
-//    port = config.get('express:port');
-//    console.log("running without iisnode");
-//}
+    console.log("running on iisnode");
+} else {
+    port = config.get('express:port');
+    console.log("running without iisnode");
+}
 
 //MIDDLEWARE
 app.set('port', port);
@@ -26,9 +24,9 @@ app.use(app.router);
 
 //ROUTES
 var path = "";
-//if (config.get("iisnode")) {
+if (config.get("iisnode")) {
     path = '/node/iisnode/api';
-//}
+}
 app.get(path + '/healthcheck', routes.healthcheck.index);
 
 //START

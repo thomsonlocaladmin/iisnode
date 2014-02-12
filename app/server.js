@@ -17,6 +17,7 @@ app.use(express.urlencoded());
 app.use(app.router);
 
 //ROUTES
+//TODO: paths fix
 app.get('/node/iisnode/api/healthcheck', routes.healthcheck.index);
 
 //START

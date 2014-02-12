@@ -8,6 +8,8 @@ var express = require('express'),
 var app = express();
 var port = process.env.PORT;
 
+console.log("test env:  " + config.get('test:key'));
+
 //MIDDLEWARE
 app.set('port', port);
 app.use(express.json());
